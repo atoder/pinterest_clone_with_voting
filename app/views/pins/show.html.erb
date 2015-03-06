@@ -1,0 +1,44 @@
+<div id="pin_show" class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading pin_image">
+        <p><%= image_tag @pin.image.url %></p>
+      </div>
+      <div class="panel-body">
+        <h1><%= @pin.title %></h1>
+        <p class="description"><%= @pin.description %></p>
+      </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-6">
+              Submitted by <%= @pin.user.email %>
+            </div>
+            <div class="col-md-6">
+              <div class="btn-group pull-right">
+                <% if current_user && (current_user.voted_as_when_voted_for @pin) %>
+                  <%= link_to dislike_pin_path(@pin), method: :put, class: "btn btn-default" do %>
+                      <span class="glyphicon glyphicon-heart"></span>
+                      <%= @pin.get_upvotes.size %>
+                  <% end %>
+                <% else %>
+                  <%= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do %>
+                      <span class="glyphicon glyphicon-heart"></span>
+                      <%= @pin.get_upvotes.size %>
+                  <% end %>
+                <% end %>
+                <%= link_to pins_path, class: "btn btn-default" do %>
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    Back
+                <% end %>
+                <% if user_signed_in? %>
+                  <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
+                  <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure"}, class: "btn btn-default" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
