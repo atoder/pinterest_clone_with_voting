@@ -1,8 +1,8 @@
-== Pinterest clone #2
+## Pinterest clone #2
 
-=== Written in Ruby On Rails
+###  Written in Ruby On Rails
 
-=== Basic things  a user can do
+### Basic things  a user can do
 - create an account
 - sign in
 - create a pin
