@@ -30,7 +30,7 @@
                     <span class="glyphicon glyphicon-step-backward"></span>
                     Back
                 <% end %>
-                <% if user_signed_in? %>
+                <% if user_signed_in? && current_user[:id] == @pin.user_id %>
                   <%= link_to "Edit", edit_pin_path, class: "btn btn-default" %>
                   <%= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are you sure"}, class: "btn btn-default" %>
                 <% end %>
